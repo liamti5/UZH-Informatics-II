@@ -4,6 +4,8 @@
 #include <unistd.h>     // for sleep()
 #define MIN -999999999 
 
+
+ //testing git
 int main() {
 	double time_spent = 0.0;
     clock_t begin = clock();
