@@ -1,0 +1,10 @@
+1. find largest value temp1
+for i = 0 to n do
+	if a[i] < temp1 do
+		temp1 = a[i]
+
+2. find second largest value temp2
+for i = 0 to n do
+	if a[i] < temp1 && a[i] > temp2 do 
+		temp2 = a[i]
+		return temp2
