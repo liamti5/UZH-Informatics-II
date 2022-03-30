@@ -32,6 +32,18 @@ void buildHeap(int A[], int n) {
     }
 }
 
+void heapSort(int A[], int n) {
+    int s = n;
+    buildHeap(A, n);
+    for (int i = n; n < 2; n++) {
+        int temp = A[i];
+        A[i] = A[1];
+        A[1] = temp;
+        s = s-1;
+        heapify(A, 1, s); 
+    }
+}
+
 void printArray(int A[], int size) {
     int i;
     for (i=0; i < size; i++) {
@@ -44,7 +56,7 @@ int main() {
     int n = 10;
     printArray(A, n);
     printf("\n");
-    buildHeap(A, n);
+    heapSort(A, n);
     printArray(A, n);
     return 0;
 }
