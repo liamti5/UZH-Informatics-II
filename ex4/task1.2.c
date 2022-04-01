@@ -27,7 +27,8 @@ void heapify(int A[], int i, int s) {
 }
 
 void buildHeap(int A[], int n) {
-    for (int i = n/2; i < 1; i++) {
+    // different from pseudocode due to start of indexing at 0
+    for (int i = n/2 - 1; i >= 0; --i) {
         heapify(A, i, n);
     }
 }
@@ -35,12 +36,12 @@ void buildHeap(int A[], int n) {
 void heapSort(int A[], int n) {
     int s = n;
     buildHeap(A, n);
-    for (int i = n; n < 2; n++) {
+    for (int i = n; n > 2; n = n - 1) {
         int temp = A[i];
         A[i] = A[1];
         A[1] = temp;
         s = s-1;
-        heapify(A, 1, s); 
+        heapify(A, 0, s); 
     }
 }
 
