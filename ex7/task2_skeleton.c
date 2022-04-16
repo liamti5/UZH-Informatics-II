@@ -71,6 +71,11 @@ int pop(Stack *s) {
 	return s -> items[s -> top + 1];
 }
 
+// i) peek: view item at the top of the stack function
+void peek(Stack *s) {
+	printf("%d\n",  s -> items[s -> top]);
+}
+
 
 // j) print stack function
 void print(Stack *s) {
@@ -86,17 +91,50 @@ void print(Stack *s) {
 	}
 }
 
+// k) check if 2 stacks are equal function
+int is_equal(Stack *s1, Stack *s2) {
+	int equal = 0; 
+	if (num_items(s1) == num_items(s2)) {
+		equal = 1; 
+		for (int i = 0; i < num_items(s1); i++) {
+			if (s1 -> items[i] != s2 -> items[i]) {
+				equal = 0; 
+				break;
+			}
+		}
+	}
+	return equal; 
+}
+
+// l) reverse stack function
+void reverse(Stack *s) {
+	int A[s -> top];
+	int n = s -> top; 
+	for (int i = 0; i <= n; i++) {
+		A[i] = pop(s);
+	}
+	for (int i = 0; i <= n; i++) {
+		push(s, A[i]);
+	}
+}
+
 int main() {
 	//TODO: your implementation
 	Stack *s1 = create(3);
 	push(s1, 4);
 	push(s1, 2);
 	push(s1, 1);
-	printf("is empty? %d\n", is_empty(s1));
-	printf("is full? %d\n", is_full(s1));
+	// printf("is empty? %d\n", is_empty(s1));
+	// printf("is full? %d\n", is_full(s1));
 	print(s1);
-	pop(s1);
+	// pop(s1);
+	// print(s1);
+	// Stack *s2 = create(4);
+	// push(s2, 4);
+	// push(s2, 2);
+	// print(s2);
+	// printf("is equal? %d\n", is_equal(s1, s2));
+	reverse(s1);
 	print(s1);
-
 	return 0;
 }
