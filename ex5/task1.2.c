@@ -50,7 +50,6 @@ void heapSort(int A[], int n) {
         int temp = A[i];
         A[i] = A[0];
         A[0] = temp;
-        s = s-1;
         heapify(A, 0, i); 
     }
 }

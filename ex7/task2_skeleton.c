@@ -107,7 +107,7 @@ int is_equal(Stack *s1, Stack *s2) {
 }
 
 // l) reverse stack function
-void reverse(Stack *s) {
+void reverse1(Stack *s) {
 	int A[s -> top];
 	int n = s -> top; 
 	for (int i = 0; i <= n; i++) {
@@ -116,6 +116,15 @@ void reverse(Stack *s) {
 	for (int i = 0; i <= n; i++) {
 		push(s, A[i]);
 	}
+}
+
+// l) different reverse stack function
+Stack *reverse2(Stack *s) {
+	Stack *s1 = create(4);
+	for (int i = 0; i <= s -> top; i++) {
+		push(s1, pop(s));
+	}
+	return s1;
 }
 
 int main() {
@@ -134,7 +143,7 @@ int main() {
 	// push(s2, 2);
 	// print(s2);
 	// printf("is equal? %d\n", is_equal(s1, s2));
-	reverse(s1);
+	reverse2(s1);
 	print(s1);
 	return 0;
 }

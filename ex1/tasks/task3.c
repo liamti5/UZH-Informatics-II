@@ -51,13 +51,10 @@ void evenOddSelectionSort(int A[], int n){
 	for (int i = 0; i < e; i ++){
 		printf("%d ", even[i]);
 	}
-
 	printf("\n");
-
 	for (int i = 0; i < o; i ++){
 		printf("%d ", odd[i]);
 	}
-
 	return;
 }
 

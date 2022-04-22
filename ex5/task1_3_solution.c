@@ -32,7 +32,6 @@ void printArray(int A[], int n) {
 }
 
 void buildheap(int A[], int n) {
-
   for (int i = n / 2 - 1; i >= 0; i--){
     heapify(A, i, n);
     printArray(A, n);
