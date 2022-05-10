@@ -1,23 +1,14 @@
 #include <stdio.h>
 
-void whatDoesItDo(int A[], int n, int k) {
-	int result = -1000;
-	int i;
-	int j; 
-	for (i = 0; i < n; i++){
-		int current = 0;
-		for (j = i; j < n; j += k) {
-			current = current + A[j];
-		}
-		if (current > result) {
-			result = current;
-		}
+int DNumbers(int i[4], int n) {
+	if (n == 1) {
+		return i[1] + i[2] + i[3] + i[4] + i;
 	}
-    printf("%d\n", result); 
+	return i + DNumbers(i, n - 1);
 }
 
 int main() {
-	int A[] = {3, 4, 6, 1, 10, 8};
-    whatDoesItDo(A, 6, 2);
-    return 0;
+	int A[4] = {1, 2, 0, 0};
+	int result = DNumbers(A, 3);
+	printf("%d", result);
 }

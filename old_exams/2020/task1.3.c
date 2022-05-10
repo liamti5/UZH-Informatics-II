@@ -21,10 +21,10 @@ void heapify(int A[], int i, int s) {
     int r = right(i);
     
     // diff from pseudocode, s = size of array
-    if (l < s && A[l] < A[m]) { // change to < for max heap
+    if (l < s && A[l] > A[m]) {
         m = l;
     }
-    if (r < s && A[r] < A[m]) { // change to < for max heap
+    if (r < s && A[r] > A[m]) {
         m = r;
     }
     if (i != m) {
@@ -55,8 +55,8 @@ void heapSort(int A[], int n) {
 }
 
 int main() {
-    int A[] = {11, 0, 9, 19, 8}; // 8, 1, 5, 13, 18, 7
-    int n = 5;
+    int A[] = {11, 0, 9, 19, 8, 1, 5, 13, 18, 7};
+    int n = 10;
     printArray(A, n);
     printf("\n");
     heapSort(A, n);

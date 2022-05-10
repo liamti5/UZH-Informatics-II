@@ -77,14 +77,22 @@ void displayList(struct Node *head) {
     }
 }
 
+
+
 int main() {
     int n, x, i;
-    struct node *l;
-    struct Node *head = NULL; // we create a pointer of type struct Node called head
+    struct node **l = NULL;
+    struct Node **head = NULL; // we create a pointer of type struct Node called head
     int A[] = {1, 4, 5, 6};
     n = 4;
     for (i = 0; i < n; i ++) {
         head = insertListEnd(head, A[i]);
+    }
+    displayList(head);
+
+    n = 4;
+    for (i = 0; i < n; i ++) {
+        l = insertListEnd(head, A[i]);
     }
     displayList(head);
     
