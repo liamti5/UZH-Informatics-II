@@ -9,9 +9,6 @@
 
 // TODO: your implementation
 int count_blinks(int n){
-	int s = 2;
-	int l = 1;
-
 	if (n == 1){
 		return 1;
 	}
