@@ -8,7 +8,7 @@
 typedef struct Stack {
 	unsigned int capacity; // unsigned -> int capacity can't be < 0
 	int* items; // list of items in the stack
-  	int top; // like the max index of the stack -> stack -> items[stack -> top] is the top element of the stack
+  	int top; // like the last index of the stack: stack -> items[stack -> top] is the top element of the stack
 } Stack;
 
 //TODO: your implementation
@@ -70,6 +70,10 @@ void peek(Stack *s) {
 	printf("%d\n",  s -> items[s -> top]);
 }
 
+int rpeek(Stack *s) {
+	return s -> items[s -> top];
+}
+
 
 // j) print stack function
 void print(Stack *s) {
@@ -121,6 +125,21 @@ Stack *reverse2(Stack *s) {
 	return s1;
 }
 
+// sort stack (2019-midterm2)
+Stack *sortStack(Stack *s) {
+	Stack *tmpStack = create(5);
+	while (!is_empty(s)) {
+		int tmp = pop(s);
+		while (!is_empty(tmpStack) && rpeek(tmpStack) < tmp) {
+			push(s, pop(tmpStack));
+			print(s);
+		}
+		push(tmpStack, tmp);
+		print(s);
+	}
+	return tmpStack; 
+}
+
 // Stack* insert(Stack *A, Stack* B, int val) {
 // 	if (capacity(A) == capacity(B) && (size(A) - capacity(A)) % 2 == 0) {
 // 		push(A, val);
@@ -132,21 +151,19 @@ Stack *reverse2(Stack *s) {
 
 int main() {
 	//TODO: your implementation
-	Stack *s1 = create(3);
-	push(s1, 4);
-	push(s1, 2);
+	Stack *s1 = create(4);
 	push(s1, 1);
-	printf("is empty? %d\n", is_empty(s1));
-	printf("is full? %d\n", is_full(s1));
+	push(s1, 3);
+	push(s1, 5);
+	push(s1, 4); 
 	print(s1);
-	pop(s1);
-	print(s1);
-	Stack *s2 = create(4);
-	push(s2, 4);
-	push(s2, 2);
-	print(s2);
-	printf("is equal? %d\n", is_equal(s1, s2));
-	reverse2(s1);
+	// Stack *s2 = create(4);
+	// push(s2, 4);
+	// push(s2, 2);
+	// print(s2);
+	// // printf("is equal? %d\n", is_equal(s1, s2));
+	// // reverse2(s1);
+	s1 = sortStack(s1);
 	print(s1);
 	return 0;
 }
