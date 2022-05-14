@@ -150,9 +150,26 @@ struct Node *bubbleSort(struct Node *head) {
   
 }
 
+void isAnagram(struct Node *s1, struct Node *s2) {
+  s1 = bubbleSort(s1);
+  s2 = bubbleSort(s2);
+  struct Node *cur1 = s1; 
+  struct Node *cur2 = s2; 
+  while (cur1 -> next != NULL) {
+    if (cur1 -> data != cur2 -> data) {
+      printf("not anagrams, value %d and %d are different\n", cur1 -> data, cur2 -> data);
+      return; 
+    } else {
+      cur1 = cur1 -> next;
+      cur2 = cur2 -> next; 
+    }
+  }
+  printf("anagrams confirmed\n");
+}
+
 int main() {
   int n, x, i;
-  struct node *l;
+  struct Node *l = NULL;
   struct Node *head = NULL;
   n = 5; 
   head = insertList(head, 6);
@@ -161,8 +178,17 @@ int main() {
   head = insertList(head, 12);
   head = insertList(head, 8);
 
+  l = insertList(l, 3);
+  l = insertList(l, 6);
+  l = insertList(l, 4);
+  l = insertList(l, 12);
+  l = insertList(l, 9);
+
+  isAnagram(head, l);
+
+
   
-  displayList(head);
+  // displayList(head);
   // printf("Before Grouping:");
   // displayList(head);
   // struct Node *gList = groupingLinkedList(head);
@@ -172,9 +198,10 @@ int main() {
   // struct Node* aList = rearrange(head);
   // displayList(aList);
   // displayList(head);
-  head = bubbleSort(head);
+  // head = bubbleSort(head);
+
 
   // deleteVal(head, 12);
-  displayList(head);
+  // displayList(head);
   return 0;
 }
