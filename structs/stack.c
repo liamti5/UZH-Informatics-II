@@ -130,7 +130,7 @@ Stack *sortStack(Stack *s) {
 	Stack *tmpStack = create(5);
 	while (!is_empty(s)) {
 		int tmp = pop(s);
-		while (!is_empty(tmpStack) && rpeek(tmpStack) < tmp) {
+		while (!is_empty(tmpStack) && peek(tmpStack) < tmp) {
 			push(s, pop(tmpStack));
 			print(s);
 		}
@@ -182,8 +182,9 @@ int main() {
 	// reverse2(s1);
 	// s1 = sortStack(s1);
 	// print(s1);
-	int in[5] = {1, 2, 3, 4, 5};
-	int out[5] = {4, 3, 1, 5, 2};
-	printf("%d\n", arrayCheck(in, out, 5));
+	// // array check function
+	// int in[5] = {1, 2, 3, 4, 5};
+	// int out[5] = {4, 3, 1, 5, 2};
+	// printf("%d\n", arrayCheck(in, out, 5));
 	return 0;
 }

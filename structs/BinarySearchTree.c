@@ -11,7 +11,7 @@ struct TreeNode {
 // a) insertion
 struct TreeNode* insert(struct TreeNode* root, int x) {
     struct TreeNode* newTreeNode = NULL; // only used if root doesn't exist yet
-    // struct TreeNode* current = root; // not used???
+    struct TreeNode* current = root; // not used???
     if (root == NULL) {
         newTreeNode = malloc(sizeof(struct TreeNode));
         newTreeNode -> val = x; 
@@ -120,49 +120,63 @@ void printTree(struct TreeNode* root) {
 }
 
 // creates a BST that shows the nbr of elements smaller than the current node
-int MaxRank(struct TreeNode* node, int rank) {
-    if (node == NULL) {
-        return 0;
-    }
-    int rankR = MaxRank(node->right, rank);
-    node -> val = max(rank, rankR);
-    int rankL = MaxRank(node -> left, node -> val + 1);
-    return max(rankL, node -> val + 1);
-}
+// int MaxRank(struct TreeNode* node, int rank) {
+//     if (node == NULL) {
+//         return 0;
+//     }
+//     int rankR = MaxRank(node -> right, rank);
+//     node -> val = max(rank, rankR);
+//     int rankL = MaxRank(node -> left, node -> val + 1);
+//     return max(rankL, node -> val + 1);
+// }
 
-// void InorderTraversal(struct TreeNode∗ root) {
+// // doesnt work!!
+// void InorderTraversal(struct TreeNode *root) {
+//     int arr[999]; 
 //     if (root == NULL) {
 //         return;
 //     }
-//     InorderTraversal(root−>left);
+//     InorderTraversal(root -> left);
 //     int inorder_id = 0; 
-//     int inorder_array[inorder_id] = root−>val;
+//     arr[inorder_id] = root -> val;
 //     inorder_id++;
-//     InorderTraversal(root−>right);
+//     InorderTraversal(root -> right);
 // }
 
-// // Then we present the function for constructing binary search tree from the sorted array.
-// struct TreeNode∗ ConstructBSTFromArray(int start, int end) {
-//     if (start > end) {
-//     return NULL;
-//     }
-//     struct TreeNode∗ root = malloc(sizeof(struct TreeNode));
-//     int mid = (start + end) / 2;
-//     root−>val = inorder array[mid];
-//     root−>left = ConstructBSTFromArray(start, mid − 1);
-//     root−>right = ConstructBSTFromArray(mid + 1, end);
-//     return root;
-// }
+// Then we present the function for constructing binary search tree from the !!!sorted array!!!.
+struct TreeNode *ConstructBSTFromArray(int A[], int start, int end) {
+    if (start > end) return NULL; 
+
+    struct TreeNode *root = malloc(sizeof(struct TreeNode));
+    int mid = (start + end) / 2; 
+    root -> val = A[mid];
+    root -> left = ConstructBSTFromArray(A, start, mid -1);
+    root -> right = ConstructBSTFromArray(A, mid + 1, end); 
+    return root; 
+}
+
+void printArray(int A[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", A[i]); 
+    }
+} 
 
 int main() {
-    struct TreeNode* root = NULL;
-    root = insert(root, 5);
-    root = insert(root, 4);
-    root = insert(root, 7);
-    root = insert(root, 8);
-    root = insert(root, 6);
-    printTree(root);
-    delete(root, 8);
-    printf("after deletion");
-    printTree(root);
+    // struct TreeNode* root = NULL;
+    // root = insert(root, 5);
+    // root = insert(root, 4);
+    // root = insert(root, 7);
+    // root = insert(root, 8);
+    // root = insert(root, 6);
+    // printTree(root);
+    // delete(root, 8);
+    // printf("after deletion\n");
+    // printTree(root);
+    int A[5] = {1, 2, 3, 4, 5}; 
+    // printArray(A, 5); 
+    struct TreeNode *test = NULL;
+    test = ConstructBSTFromArray(A, 0, 4); 
+    printTree(test);  
+
+
 }
