@@ -22,6 +22,7 @@ void init(struct HTElement A[]){
   }
 }
 
+// open addressing: double hashing
 int hash(int k, int i){
   int h1 = (k % m) +1;
   int h2= m - 1 - (k % (m-1));

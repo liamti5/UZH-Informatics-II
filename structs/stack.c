@@ -66,8 +66,8 @@ int pop(Stack *s) {
 }
 
 // i) peek: view item at the top of the stack function
-void peek(Stack *s) {
-	printf("%d\n",  s -> items[s -> top]);
+int peek(Stack *s) {
+	return s -> items[s -> top];
 }
 
 int rpeek(Stack *s) {
@@ -140,6 +140,23 @@ Stack *sortStack(Stack *s) {
 	return tmpStack; 
 }
 
+// ex7 task 4: check if 2 arrays in and out can be achieved by pushing/popping a stack with n operations
+int arrayCheck(int in[], int out[], int n) {
+	Stack *helper = create(sizeof(n));
+	int j = 0; 
+	for (int i = 0; i < n; i++) {
+		push(helper, in[i]);
+		while (!is_empty(helper) && peek(helper) == out[j]) { 
+			pop(helper); 
+			j ++; 
+		}		
+	}
+	int result = is_empty(helper); // if helper is empty, then the 2 arrays can be achieved. Else not possible
+	delete(helper);
+	return result;  
+
+}
+
 // Stack* insert(Stack *A, Stack* B, int val) {
 // 	if (capacity(A) == capacity(B) && (size(A) - capacity(A)) % 2 == 0) {
 // 		push(A, val);
@@ -161,9 +178,12 @@ int main() {
 	// push(s2, 4);
 	// push(s2, 2);
 	// print(s2);
-	// // printf("is equal? %d\n", is_equal(s1, s2));
-	// // reverse2(s1);
-	s1 = sortStack(s1);
-	print(s1);
+	// printf("is equal? %d\n", is_equal(s1, s2));
+	// reverse2(s1);
+	// s1 = sortStack(s1);
+	// print(s1);
+	int in[5] = {1, 2, 3, 4, 5};
+	int out[5] = {4, 3, 1, 5, 2};
+	printf("%d\n", arrayCheck(in, out, 5));
 	return 0;
 }
