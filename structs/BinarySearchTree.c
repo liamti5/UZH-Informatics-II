@@ -36,15 +36,12 @@ struct TreeNode* search(struct TreeNode* root, int x) {
     if (root -> val == x) {
         return root; 
     }
-
     else if (x > root -> val) {
         return search(root -> right, x);
     }
-
     else if( x < root -> val) {
         return search(root -> left, x);
     }
-
     else {
         return NULL;
     }
@@ -155,6 +152,15 @@ struct TreeNode *ConstructBSTFromArray(int A[], int start, int end) {
     return root; 
 }
 
+struct TreeNode *trimBST(struct TreeNode *root, int low, int high) {
+    if (root == NULL) return root; 
+    if (root -> val > high) return trimBST(root -> left, low, high); 
+    if (root -> val < low) return trimBST(root -> right, low, high); 
+    root -> left = trimBST(root -> left, low, high);
+    root -> right = trimBST(root -> right, low, high); 
+    return root; 
+}
+
 void printArray(int A[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%d ", A[i]); 
@@ -162,21 +168,24 @@ void printArray(int A[], int n) {
 } 
 
 int main() {
-    // struct TreeNode* root = NULL;
-    // root = insert(root, 5);
-    // root = insert(root, 4);
-    // root = insert(root, 7);
-    // root = insert(root, 8);
-    // root = insert(root, 6);
+    struct TreeNode* root = NULL;
+    root = insert(root, 5);
+    root = insert(root, 4);
+    root = insert(root, 7);
+    root = insert(root, 8);
+    root = insert(root, 6);
     // printTree(root);
     // delete(root, 8);
     // printf("after deletion\n");
     // printTree(root);
-    int A[5] = {1, 2, 3, 4, 5}; 
+    // int A[5] = {1, 2, 3, 4, 5}; 
     // printArray(A, 5); 
-    struct TreeNode *test = NULL;
-    test = ConstructBSTFromArray(A, 0, 4); 
-    printTree(test);  
+    // struct TreeNode *test = NULL;
+    // test = ConstructBSTFromArray(A, 0, 4); 
+    // printTree(test);  
 
+    // // testing trimBST
+    root = trimBST(root, 5, 8); 
+    printTree(root); 
 
 }
