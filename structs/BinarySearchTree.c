@@ -1,5 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
 
 
 struct TreeNode { 
@@ -117,15 +123,15 @@ void printTree(struct TreeNode* root) {
 }
 
 // creates a BST that shows the nbr of elements smaller than the current node
-// int MaxRank(struct TreeNode* node, int rank) {
-//     if (node == NULL) {
-//         return 0;
-//     }
-//     int rankR = MaxRank(node -> right, rank);
-//     node -> val = max(rank, rankR);
-//     int rankL = MaxRank(node -> left, node -> val + 1);
-//     return max(rankL, node -> val + 1);
-// }
+int MaxRank(struct TreeNode* node, int rank) {
+    if (node == NULL) {
+        return 0;
+    }
+    int rankR = MaxRank(node -> right, rank);
+    node -> val = max(rank, rankR);
+    int rankL = MaxRank(node -> left, node -> val + 1);
+    return max(rankL, node -> val + 1);
+}
 
 // // doesnt work!!
 // void InorderTraversal(struct TreeNode *root) {
@@ -183,9 +189,10 @@ int main() {
     // struct TreeNode *test = NULL;
     // test = ConstructBSTFromArray(A, 0, 4); 
     // printTree(test);  
+    MaxRank(root, 0);
 
     // // testing trimBST
-    root = trimBST(root, 5, 8); 
+    // root = trimBST(root, 5, 8); 
     printTree(root); 
 
 }

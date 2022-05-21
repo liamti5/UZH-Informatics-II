@@ -113,6 +113,30 @@ struct Node* rearrange(struct Node* h) {
   return rearranged; 
 }
 
+struct Node *rearrange2 (struct Node *h) {
+	struct Node *d1 = malloc(sizeof(struct Node)); //initialize pointer d1 that points to a space strucuture node 
+	struct Node *d2 = malloc(sizeof(struct Node));
+	struct Node *smaller = d1; // pointer to a pointer
+	struct Node *larger = d2; 
+	struct Node *current = h; 
+	while (current != NULL) {
+		if (current -> data < h -> data) {
+			smaller -> next = current; 
+			smaller = smaller -> next;
+		} else {
+			larger -> next = current; 
+			larger = larger -> next; 
+		}		
+		current = current -> next; 
+	}	
+
+	smaller -> next = d2 -> next;
+  larger -> next = NULL; 
+  struct Node *newh = d1 -> next; 
+
+	return newh; 
+}
+
 void swap_nodes(struct Node *prev, struct Node *cur) {
   struct Node *ne = cur-> next;
   struct Node *temp = ne -> next;
@@ -147,7 +171,17 @@ struct Node *bubbleSort(struct Node *head) {
   head = dummy -> next; 
   free(dummy); 
   return head; 
-  
+}
+
+struct Node *merge2lists(struct Node *rootA, struct Node *rootB) {
+  struct Node *current = rootA; 
+  while (current -> next != NULL) {
+    current = current -> next; 
+  }
+  current -> next = rootB; 
+  struct Node *result = rootA -> next; 
+  result = bubbleSort(result); 
+  return result; 
 }
 
 void isAnagram(struct Node *s1, struct Node *s2) {
@@ -172,19 +206,24 @@ int main() {
   struct Node *l = NULL;
   struct Node *head = NULL;
   n = 5; 
-  head = insertList(head, 6);
+  head = insertList(head, 1);
+  head = insertList(head, 2);
   head = insertList(head, 3);
-  head = insertList(head, 4);
-  head = insertList(head, 12);
-  head = insertList(head, 8);
+  // head = insertList(head, 12);
+  // head = insertList(head, 8);
 
-  l = insertList(l, 3);
   l = insertList(l, 6);
   l = insertList(l, 4);
-  l = insertList(l, 12);
-  l = insertList(l, 9);
+  l = insertList(l, 5);
+  // l = insertList(l, 12);
+  // l = insertList(l, 9);
 
-  isAnagram(head, l);
+  displayList(head);
+  merge2lists(head, l);
+  displayList(head);
+
+  // isAnagram(head, l);
+
 
 
   
