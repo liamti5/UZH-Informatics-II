@@ -74,14 +74,14 @@ int isMaxHeap(int a[], int i,  int n) {
 }
 
 int main() {
-  // int A[] = {11, 0, 9, 19, 8, 1, 5, 13, 18, 7}; 
-  int A[] = {19, 18, 9, 13, 8, 1, 5, 11, 0, 7};
+  int A[] = {11, 0, 9, 19, 8, 1, 5, 13, 18, 7}; 
+  // int A[] = {19, 18, 9, 13, 8, 1, 5, 11, 0, 7};
   int n = sizeof(A) / sizeof(A[0]);
   int i = 0;
   printArray(A, n);
-  // heapSort(A, n);
-  // printf("State of A after heapSort: \n");
+  heapSort(A, n);
+  printf("State of A after heapSort: \n");
   printArray(A, n);
-  printf("%d", isMaxHeap(A, i, n));
+  // printf("%d", isMaxHeap(A, i, n));
 
 }
