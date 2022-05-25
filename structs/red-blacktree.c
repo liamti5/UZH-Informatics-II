@@ -153,13 +153,13 @@ int MaxRank(struct rb_node* node, int rank) {
 // }
 
 // // Then we present the function for constructing binary search tree from the sorted array.
-// struct TreeNode∗ ConstructBSTFromArray(int start, int end) {
+// struct TreeNode* ConstructBSTFromArray(int start, int end) {
 //     if (start > end) {
 //     return NULL;
 //     }
-//     struct TreeNode∗ root = malloc(sizeof(struct TreeNode));
+//     struct TreeNode* root = malloc(sizeof(struct rb_node));
 //     int mid = (start + end) / 2;
-//     root−>val = inorder array[mid];
+//     root -> val = inorder array[mid];
 //     root−>left = ConstructBSTFromArray(start, mid − 1);
 //     root−>right = ConstructBSTFromArray(mid + 1, end);
 //     return root;
