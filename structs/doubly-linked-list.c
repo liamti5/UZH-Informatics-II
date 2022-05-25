@@ -39,9 +39,7 @@ struct node* search(struct node* h, int val){
 	return curr;
 }
 
-void xxchg(struct node* a, struct node* b,
-					struct node** h,struct node** t){
-	
+void xchg(struct node* a, struct node* b, struct node** h,struct node** t) {	
 	struct node* ap = a->p;
 	struct node* an = a->n;
 	struct node* bp = b->p;
@@ -62,23 +60,24 @@ void xxchg(struct node* a, struct node* b,
 	a->n = bn; 
 }
 
-void xchg(struct node *a, struct node *b, struct node **h, struct node **t) {
-  struct node *current = a; 
-  while (current -> n != b) {
-    current = current -> n;
-  }
-  struct node *temp = a; 
-  a = current -> n; // a now points to value of b
+// my try on xchg, doesn't rlly work 
+// void xxchg(struct node *a, struct node *b, struct node **h, struct node **t) {
+//   struct node *current = a; 
+//   while (current -> n != b) {
+//     current = current -> n;
+//   }
+//   struct node *temp = a; 
+//   a = current -> n; // a now points to value of b
 
-  struct node *currentb = b; 
-  while (currentb -> p != temp) { // temp is now a, we already changed a
-    currentb = currentb -> p; 
-  }
-  temp = b; 
-  b = currentb -> p; 
-  *h = a;
-  *t = b;   
-}
+//   struct node *currentb = b; 
+//   while (currentb -> p != temp) { // temp is now a, we already changed a
+//     currentb = currentb -> p; 
+//   }
+//   temp = b; 
+//   b = currentb -> p; 
+//   *h = b;
+//   *t = a;   
+// }
 
 void print(struct node* h) {
 	struct node* curr = h;
@@ -101,7 +100,7 @@ int main() {
 	printf("Appending 10 and 20 to list: \n");
 	append(&h,&t,10);
 	append(&h,&t,20);
-	print(h);
+	// print(h);
 	// xchg(search(h,10),search(h,20),&h,&t);
 	// printf("Exchanging 10 and 20 in list: \n");
 	// print(h);
