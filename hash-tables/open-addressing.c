@@ -22,32 +22,34 @@ void init(struct HTElement A[]){
   }
 }
 
+// open-addressing: double hashing
 int hash(int k, int i){
   int h1 = (k % m) +1;
-  int h2= m - 1 - (k % (m-1));
+  int h2= (m - 1) - (k % (m-1));
   return (h1 + i*h2) % m;
 }
 
 void insert(struct HTElement A[], int key){
   int counter = 0;
   int hkey;
+  // figure out in which index the key should be inserted into
   do{
     hkey = hash(key, counter);
   } while(A[hkey].status == OCC && counter++ < m); // do-while loop
   
-  A[hkey].val = key;
-  A[hkey].status = OCC; 
+  A[hkey].val = key; // insert the key into the given index of ht
+  A[hkey].status = OCC;  // set the status to occupied
 }
 
 int search(struct HTElement A[], int key){
-  int counter = 0;
+  int counter = 0; // we use counter to check if we've gone through all elements already
   int hkey;
   do {
     hkey=hash(key, counter);
   } while(A[hkey].val != key && A[hkey].status == OCC && counter++ < m);
 
   if (A[hkey].val == key) { 
-    return hkey;
+    return hkey; // returns index
   } else {
     return -1;
   }
@@ -89,7 +91,7 @@ void printHashTable(struct HTElement A[]) {
 
 
 int main() {
-  struct HTElement A[m];
+  struct HTElement A[m]; // actually just a array with additional status attribute
   init(A);
 
   insert(A, 1313);
@@ -102,9 +104,11 @@ int main() {
   
   printHashTable(A);
 
-  printf("deleting 1313\n");
-  delete(A, 1313);
-  printHashTable(A);
+  // printf("deleting 1313\n");
+  // delete2(A, 1313);
+  // printHashTable(A);
+
+  printf("%d", search(A, 1313)); 
   
 
 

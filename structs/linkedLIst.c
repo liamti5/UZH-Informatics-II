@@ -13,6 +13,7 @@ struct Node {
   struct Node *next;
 };
 
+
 void displayList(struct Node *head) {
   struct Node *current = head;
   while (current != NULL) {

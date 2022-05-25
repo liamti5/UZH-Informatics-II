@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+// ARRAY IS SORTED IN ASCENDING AND THEN DESCENDING SO ONLY WORKS FOR THESE KINDA ARRAYS
 int largest(int A[], int l, int r) {
 	int mid = (l + r)/2;
 	if (l==r) return A[l];
