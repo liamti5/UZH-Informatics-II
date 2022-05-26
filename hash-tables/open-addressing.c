@@ -29,6 +29,10 @@ int hash(int k, int i){
   return (h1 + i*h2) % m;
 }
 
+int hashlin(int k, int i) {
+  return k % 5;
+}
+
 void insert(struct HTElement A[], int key){
   int counter = 0;
   int hkey;
@@ -60,7 +64,7 @@ int delete(struct HTElement A[], int key){
   int hkey;
   do {
     hkey = hash(key, counter);
-    if (A[hkey].val == key) {
+    if (A[hkey] -> val == key) {
       A[hkey].status = DEL;
       return key;
     }
