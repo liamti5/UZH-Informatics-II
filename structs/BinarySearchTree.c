@@ -133,18 +133,15 @@ int MaxRank(struct TreeNode* node, int rank) {
     return max(rankL, node -> val + 1);
 }
 
-// // doesnt work!!
-// void InorderTraversal(struct TreeNode *root) {
-//     int arr[999]; 
-//     if (root == NULL) {
-//         return;
-//     }
-//     InorderTraversal(root -> left);
-//     int inorder_id = 0; 
-//     arr[inorder_id] = root -> val;
-//     inorder_id++;
-//     InorderTraversal(root -> right);
-// }
+void inorder(struct TreeNode *root) {
+    if (root == NULL) {
+        return;
+    }
+    inorder(root -> left);
+    printf("%d ", root -> val);
+    inorder(root -> right);
+}
+
 
 // Then we present the function for constructing binary search tree from the !!!sorted array!!!.
 struct TreeNode *ConstructBSTFromArray(int A[], int start, int end) {
@@ -180,6 +177,7 @@ int main() {
     root = insert(root, 7);
     root = insert(root, 8);
     root = insert(root, 6);
+    inorder(root); 
     // printTree(root);
     // delete(root, 8);
     // printf("after deletion\n");
@@ -189,10 +187,10 @@ int main() {
     // struct TreeNode *test = NULL;
     // test = ConstructBSTFromArray(A, 0, 4); 
     // printTree(test);  
-    MaxRank(root, 0);
+    // MaxRank(root, 0);
 
     // // testing trimBST
     // root = trimBST(root, 5, 8); 
-    printTree(root); 
+    // printTree(root); 
 
 }
