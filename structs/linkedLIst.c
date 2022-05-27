@@ -185,6 +185,28 @@ struct Node *merge2lists(struct Node *rootA, struct Node *rootB) {
   return result; 
 }
 
+// merges 2 lists, from midterm 2020-2 
+void merge(struct Node **A, struct Node **B) {
+  if (*A == NULL && *B == NULL) return; 
+  else if (*A == NULL) {
+    *A = *B; 
+    return; 
+  }
+  else if (*B == NULL) {
+    *B = *A;
+    return; 
+  }
+  struct Node* curr = *A; 
+  struct Node* next = *B; 
+  while (next != NULL) {
+    struct Node *temp = next; 
+    next = curr -> next; 
+    curr -> next = temp; 
+    curr = temp;  
+  }
+  *B = *A; 
+}
+
 void isAnagram(struct Node *s1, struct Node *s2) {
   s1 = bubbleSort(s1);
   s2 = bubbleSort(s2);
@@ -220,7 +242,9 @@ int main() {
   // l = insertList(l, 9);
 
   displayList(head);
-  merge2lists(head, l);
+  displayList(l); 
+  // merge2lists(head, l);
+  merge(&head, &l);
   displayList(head);
 
   // isAnagram(head, l);
