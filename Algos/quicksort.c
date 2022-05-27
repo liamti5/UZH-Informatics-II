@@ -1,4 +1,5 @@
 #include <stdio.h>
+#define TRUE 1
 
 void swap(int *a, int *b) {
     int t = *a;
@@ -6,8 +7,21 @@ void swap(int *a, int *b) {
     *b = t;
 }
 
-// find the partition position
-int partition(int array[], int low, int high) {
+// int hoarePartition(int array[], int low, int high) {
+//     int x = array[high]; 
+//     int i = low - 1; 
+//     int j = high + 1; 
+
+//     while (TRUE) { 
+//         while (array[j] > x) j--; 
+//         while (array[i] < x) i++;
+//         if (i < j) swap(&array[i], &array[j]);
+//         else return i; 
+//     }
+// }
+
+// find the partition position (lomuto partitioning)
+int lomutoPartition(int array[], int low, int high) {
 
     // select the rightmost element as pivot
     int pivot = array[high];
@@ -42,7 +56,8 @@ void quickSort(int array[], int low, int high) {
         // find the pivot element such that
         // elements smaller than pivot are on left of pivot
         // elements greater than pivot are on right of pivot
-        int pi = partition(array, low, high);
+        // int pi = lomutoPartition(array, low, high);
+        int pi = lomutoPartition(array, low, high); 
 
         // recursive call on the left of pivot
         quickSort(array, low, pi - 1);
