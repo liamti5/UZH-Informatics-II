@@ -7,7 +7,6 @@
        __typeof__ (b) _b = (b); \
      _a > _b ? _a : _b; })
 
-
 struct TreeNode { 
     int val;
     struct TreeNode* left; 
@@ -133,6 +132,18 @@ int MaxRank(struct TreeNode* node, int rank) {
     return max(rankL, node -> val + 1);
 }
 
+// MinAggregate modifies the tree such that each node contains the aggregated value of all nodes (i.e., summation of values) less
+// than or equal to that node. (midterm 2020-2)
+int minimumAggregateTree(struct TreeNode *node, int sum) {
+    if (node == NULL) {
+        return sum; 
+    }
+    sum = node -> val + minimumAggregateTree(node -> left, sum);  
+    node -> val = sum; 
+    sum = minimumAggregateTree(node -> right, sum); 
+    return sum; 
+}
+
 void inorder(struct TreeNode *root) {
     if (root == NULL) {
         return;
@@ -177,7 +188,9 @@ int main() {
     root = insert(root, 7);
     root = insert(root, 8);
     root = insert(root, 6);
-    inorder(root); 
+    minimumAggregateTree(root, 0); 
+    printTree(root); 
+    // inorder(root); 
     // printTree(root);
     // delete(root, 8);
     // printf("after deletion\n");
@@ -192,5 +205,4 @@ int main() {
     // // testing trimBST
     // root = trimBST(root, 5, 8); 
     // printTree(root); 
-
 }
