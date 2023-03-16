@@ -39,6 +39,7 @@ struct node* search(struct node* h, int val){
 	return curr;
 }
 
+// exchanges 2 values in a doubly linked list 
 void xchg(struct node* a, struct node* b, struct node** h,struct node** t) {	
 	struct node* ap = a->p;
 	struct node* an = a->n;
@@ -59,25 +60,6 @@ void xchg(struct node* a, struct node* b, struct node** h,struct node** t) {
 	b->p = ap;	
 	a->n = bn; 
 }
-
-// my try on xchg, doesn't rlly work 
-// void xxchg(struct node *a, struct node *b, struct node **h, struct node **t) {
-//   struct node *current = a; 
-//   while (current -> n != b) {
-//     current = current -> n;
-//   }
-//   struct node *temp = a; 
-//   a = current -> n; // a now points to value of b
-
-//   struct node *currentb = b; 
-//   while (currentb -> p != temp) { // temp is now a, we already changed a
-//     currentb = currentb -> p; 
-//   }
-//   temp = b; 
-//   b = currentb -> p; 
-//   *h = b;
-//   *t = a;   
-// }
 
 void print(struct node* h) {
 	struct node* curr = h;

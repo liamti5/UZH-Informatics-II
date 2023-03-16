@@ -67,6 +67,7 @@ struct Node* deleteVal(struct Node* head, int val) {
   }
 }
 
+// groupes the vals of a linked list into odd and even nbrs
 struct Node* groupingLinkedList(struct Node *head) {
   struct Node *odd = NULL;
   struct Node *even = NULL;
@@ -138,6 +139,7 @@ struct Node *rearrange2 (struct Node *h) {
 	return newh; 
 }
 
+// exchanges 2 nodes
 void swap_nodes(struct Node *prev, struct Node *cur) {
   struct Node *ne = cur-> next;
   struct Node *temp = ne -> next;
@@ -147,6 +149,7 @@ void swap_nodes(struct Node *prev, struct Node *cur) {
   return;
 }
 
+// sorts the list with bubble sort
 struct Node *bubbleSort(struct Node *head) {
   if (head == NULL || head -> next == NULL) {
     return head;
@@ -174,6 +177,7 @@ struct Node *bubbleSort(struct Node *head) {
   return head; 
 }
 
+// merges 2 lists
 struct Node *merge2lists(struct Node *rootA, struct Node *rootB) {
   struct Node *current = rootA; 
   while (current -> next != NULL) {
@@ -207,6 +211,7 @@ void merge(struct Node **A, struct Node **B) {
   *B = *A; 
 }
 
+// checks if 2 lists are anagrams of each other
 void isAnagram(struct Node *s1, struct Node *s2) {
   s1 = bubbleSort(s1);
   s2 = bubbleSort(s2);

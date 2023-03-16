@@ -15,8 +15,7 @@ int min(int n1, int n2) {
 // finds smallest element in a binary tree
 int smallest(struct node* p, int v) {
     if (p == NULL) { return v; }
-    return min(smallest(p->left,v),
-               min(smallest(p->right,v), p->value));
+    return min(smallest(p->left,v), min(smallest(p->right,v), p->value));
 }
 
 int main() {

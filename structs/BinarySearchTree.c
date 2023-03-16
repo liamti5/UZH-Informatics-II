@@ -166,6 +166,7 @@ struct TreeNode *ConstructBSTFromArray(int A[], int start, int end) {
     return root; 
 }
 
+// trimms the BST so that it only contains values that are in the given low and high
 struct TreeNode *trimBST(struct TreeNode *root, int low, int high) {
     if (root == NULL) return root; 
     if (root -> val > high) return trimBST(root -> left, low, high); 
@@ -188,7 +189,7 @@ int main() {
     root = insert(root, 7);
     root = insert(root, 8);
     root = insert(root, 6);
-    minimumAggregateTree(root, 0); 
+    trimBST(root, 5, 7); 
     printTree(root); 
     // inorder(root); 
     // printTree(root);

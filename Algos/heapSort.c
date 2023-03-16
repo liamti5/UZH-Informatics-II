@@ -50,6 +50,7 @@ void heapSort(int A[], int n) {
   }
 }  
 
+// checks if a array is a maxHeap
 int isMaxHeap(int a[], int i,  int n) {
   if (i > (n-2)/2) {
     return 1; 

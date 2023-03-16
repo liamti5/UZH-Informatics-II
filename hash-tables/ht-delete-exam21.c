@@ -34,8 +34,7 @@ int HTInsert(int k){
 	return probe;
 }
 
-
-
+// deletes key and recreates the HT as if the key was never there before
 int HTDelete(int k){
 	int i=0;
 	int probe = hash(k,i);
